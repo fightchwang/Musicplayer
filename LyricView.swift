@@ -30,6 +30,8 @@ class LyricView:UIView {
     override init(frame: CGRect){
         super.init(frame: frame)
         self.scorllView = UIScrollView(frame: CGRectMake(0, 10, self.frame.width / 2.0 , self.frame.height - 20))
+        NSLog("init frame:\(frame)")
+        self.scorllView = UIScrollView(frame: CGRectMake(0 , 0, self.frame.width , self.frame.height))
         self.addSubview(self.scorllView)
     }
 
@@ -268,8 +270,10 @@ class LyricView:UIView {
         for var i = 0; i < self.titleArray.count ; i++ {
             let title = titleArray[i] as! String
             let olderWidth = (title as NSString).sizeWithAttributes([NSFontAttributeName:UIFont.systemFontOfSize(14.0)])
-            let label = UILabel(frame: CGRectMake(0.0, 25.0 * CGFloat(i) + self.scorllView.frame.height / 2.0 , olderWidth.width, 25.0))
-            let labelWithColor = UILabel(frame: CGRectMake(0.0, 25.0 * CGFloat(i) + self.scorllView.frame.height / 2.0 , 0.0, 25.0))
+            //居中
+            let xCordinate = olderWidth.width > self.frame.width ? 0.0 : (self.frame.width - olderWidth.width) / 2.0
+            let label = UILabel(frame: CGRectMake(xCordinate , 25.0 * CGFloat(i) + self.scorllView.frame.height / 2.0 , olderWidth.width, 25.0))
+            let labelWithColor = UILabel(frame: CGRectMake(xCordinate, 25.0 * CGFloat(i) + self.scorllView.frame.height / 2.0 , 0.0, 25.0))
             label.text = title
             label.textColor = UIColor.lightGrayColor()
             label.font = UIFont.systemFontOfSize(14.0)
@@ -301,7 +305,6 @@ class LyricView:UIView {
 //                    item.textColor = UIColor(red: 192.0 / 255.0, green: 37.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0)
 //                    item.font = UIFont.boldSystemFontOfSize(14.0)
                     animationLRCLine(item, coloredLabel: coloredLabel, timeCost:self.eachLineCost[index] as! Float)
-                    
                 }
             }
         }
