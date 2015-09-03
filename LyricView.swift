@@ -144,6 +144,7 @@ class LyricView:UIView {
                 (finished:Bool) -> () in
                 label.frame = labelOriginFrame
                 coloredLabel.frame = labelOriginFrame
+                coloredLabel.textColor = UIColor.lightGrayColor()
         })
         
     }
