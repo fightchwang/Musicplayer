@@ -12,7 +12,6 @@ import UIKit
 ///
 /// 描述：显示歌词控件
 ///
-/// 作者：huangyibiao
 class LyricView:UIView {
     private var scorllView:UIScrollView!
     private var keyArray = NSMutableArray()
